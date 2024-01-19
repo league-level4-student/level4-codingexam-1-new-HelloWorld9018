@@ -1,5 +1,7 @@
 package scheduler;
 
+import java.util.Scanner;
+
 /*
  * Objective: Create a weekly scheduling application.
  * 
@@ -24,8 +26,35 @@ package scheduler;
  *   variables.
  */
 public class Scheduler {
+	static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-
+    	
+    	QuestionPage questions = new QuestionPage();
+    	Scanner firstScan = new Scanner(System.in);
+    	
+    	System.out.println("Welcome to calendar. Type a number to perform an action\n(1) to add event\n(2) to view event\n"
+    			+ "(3) to remove event");
+    	int option = firstScan.nextInt();
+    	//firstScan.close();
+    	questions.promptAction(option);
+    	
+    	
+    	
+    	/*
+    	checkForAction();
+    	System.out.println("Stuff happening");
+    	checkForAction();*/
+    	
+    	
+    	
     }
+    
+    /*public static void checkForAction(){
+    	
+    	int input = scanner.nextInt();
+    	
+    }*/
+    
+    
 }
