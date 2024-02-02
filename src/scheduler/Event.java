@@ -16,4 +16,20 @@ public class Event {
 		startTime = 0;
 		endTime = 0;
 	}
+	
+	public String toString() {
+		return description + " at " + startTime + " to " + endTime;
+	}
+	
+	public String getDescription() {
+		return description;
+	}
+	
+	public int getStartTime() {
+		return startTime;
+	}
+	
+	public int getEndTime() {
+		return endTime;
+	}
 }

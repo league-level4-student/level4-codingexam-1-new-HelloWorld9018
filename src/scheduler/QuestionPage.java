@@ -17,15 +17,25 @@ public class QuestionPage {
 	
 	public QuestionPage() {
 		//testing out nodes, so I can properly view events?
-		Event blankEvent = new Event();
-		Node<Event> blankNode = new Node<Event>(blankEvent);
-		mon.myList.setHead(blankNode);
+		//Event blankEvent = new Event();
+		//Node<Event> blankNode = new Node<Event>(blankEvent);
+		//mon.myList.setHead(blankNode);
 		//mon.myList.
+		
+		
 	}
 	
 	public void promptAction(int action) {
 		//set days to having no events
-		
+		boolean keepGoing = true;
+		while(keepGoing) {
+			
+			//fix this little bit here... delete the two other scanners.
+		Scanner actionScanner = new Scanner(System.in);
+		System.out.println("");
+    	
+    	int nextAction = actionScanner.nextInt();
+    	
 		//int action = scanner.nextInt();
     	switch (action) {
     	case 1:	
@@ -39,11 +49,13 @@ public class QuestionPage {
     		break;
     	case 4:
     		//exited = true;
+    		keepGoing = false;
     		break;
     	default:
     		System.out.println(action + " is not one of the options. Please enter a number 1-3");
     		break;
     	}
+		}
 		
 	}
 	
@@ -121,18 +133,100 @@ public class QuestionPage {
     
 
 	public void viewEvents() {
-    	System.out.println("Second option selected");
+    	//System.out.println("Second option selected");
     	//System.out.println(mon);
     	//System.out.println(tues);
+		Scanner reader = new Scanner(System.in);
     	for(int i = 0; i<days.length; i++) {
     		System.out.println(days[i]);
-    		//System.out.println(days[i]);
-    		System.out.println(days[i].myList.getHead());
+    	
+    		Node someNode = days[i].myList.getHead();
+    		while(someNode != null) {
+    			System.out.println(someNode.getValue().toString());
+    			someNode = someNode.getNext();
+    		}
+    		
     	}
+    	
+    	System.out.println("");
+    	
+    	int nextAction = reader.nextInt();
+    	promptAction(nextAction);
+    	
+    	
     }
     
     public void removeEvent() {
-    	System.out.println("Third option selected");
+    	Scanner scannerA = new Scanner(System.in);
+    	Scanner actionScanner = new Scanner(System.in);
+    	System.out.println("Which day would you like to remove an event from?");
+    	String dayChosen = scannerA.nextLine().toLowerCase();
+    	
+    	System.out.println("Enter the name of the event:");
+    	String eventName  = scannerA.nextLine().toLowerCase();
+    	
+    	//boolean eventDeleted = false;
+    	
+    	int counter = 0;
+    	int myDay = 0;
+    	Node someEvent = null;
+    	
+    		switch(dayChosen) {
+    		case "monday":
+    			myDay = 0;
+    			
+    			break;
+    			
+    		case "tuesday":
+    			myDay = 1;
+    			break;
+    			
+    		case "wednesday":
+    			myDay = 2;
+    			
+    			break;
+    		
+    		case "thursday":
+    			myDay = 3;
+    			break;
+    			
+    		case "friday":
+    			myDay = 4;
+    			break;
+    			
+    		case "saturday":
+    			myDay = 5;
+    			break;
+    			
+    		case "sunday":
+    			myDay = 6;
+    			break;
+    			
+    		default:
+    			System.out.println("Sorry, " + dayChosen + " isn't recognised. Double check your spelling and type again.");
+        		dayChosen = scannerA.nextLine().toLowerCase();
+        		return;
+    			
+    		}
+    		
+    		someEvent = days[myDay].myList.getHead();
+    		while(someEvent != null) {
+			if(((Event) someEvent.getValue()).getDescription().equals(eventName)) {
+				days[myDay].myList.remove(counter);
+				System.out.println("Event was removed from calender");
+				
+				return;
+			}
+    		
+    		
+    		someEvent = someEvent.getNext();
+    		counter++;
+    		}
+    		
+    		//only occurs if event was not removed:
+    		
+    		
+
     }
 	
 }
