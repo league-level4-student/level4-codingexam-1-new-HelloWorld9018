@@ -26,7 +26,6 @@ import java.util.Scanner;
  *   variables.
  */
 public class Scheduler {
-	static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
     	
@@ -36,25 +35,8 @@ public class Scheduler {
     	System.out.println("Welcome to calendar. Type a number to perform an action\n(1) to add event\n(2) to view event\n"
     			+ "(3) to remove event");
     	int option = firstScan.nextInt();
-    	//firstScan.close();
     	questions.promptAction(option);
     	
-    	
-    	
-    	/*
-    	checkForAction();
-    	System.out.println("Stuff happening");
-    	checkForAction();*/
-    	
-    	
-    	
     }
-    
-    /*public static void checkForAction(){
-    	
-    	int input = scanner.nextInt();
-    	
-    }*/
-    
     
 }

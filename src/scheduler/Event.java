@@ -1,9 +1,9 @@
 package scheduler;
 
 public class Event {
-	String description;
-	int startTime; //military time
-	int endTime;
+	private String description;
+	private int startTime; //military time
+	private int endTime;
 	
 	
 	public Event(String description, int startTime, int endTime) {
